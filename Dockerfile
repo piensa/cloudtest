@@ -5,4 +5,5 @@ RUN CGO_ENABLED=0 go build -ldflags "-s -w" -o main
 
 FROM scratch
 COPY --from=base /usr/src/main /server
+COPY --from=base /usr/src/data.csv /data.csv
 CMD ["/server"]
