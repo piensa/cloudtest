@@ -13,11 +13,11 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
                fileName := "data.csv"
                f, err := os.Open(fileName)
-		r := csv.NewReader(f)
+		reader := csv.NewReader(f)
 		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
 
              for {
-  		record, err := r.Read()
+  		record, err := reader.Read()
   		if err == io.EOF {
   			break
   		}
