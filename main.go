@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"net/http"
 	"encoding/csv"
-  	"strings"
   	"log"
   	"io"
 )
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		r := csv.NewReader(strings.NewReader(in))
+               filename := "data.csv"
+               f, err := os.Open(fileName)
+		r := csv.NewReader(f)
 		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
 
              for {
