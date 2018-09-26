@@ -6,11 +6,12 @@ import (
 	"encoding/csv"
   	"log"
   	"io"
+        "os"
 )
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-               filename := "data.csv"
+               fileName := "data.csv"
                f, err := os.Open(fileName)
 		r := csv.NewReader(f)
 		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
